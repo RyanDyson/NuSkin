@@ -32,7 +32,7 @@ export function NavBar() {
       <NavDropdown
         isOpen={isCategoriesOpen}
         setIsOpen={setIsCategoriesOpen}
-        className="h-32 bg-green-200"
+        className="h-32 bg-green-200 transition-all duration-300 ease-out"
       ></NavDropdown>
     </>
   );
