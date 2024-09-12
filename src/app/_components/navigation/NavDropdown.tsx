@@ -20,15 +20,15 @@ export function NavDropdown({
   setIsOpen,
 }: DropdownProps) {
   const [ref, { height }] = useMeasure();
-  console.log(height);
+  const yTransform = 2 * height;
 
   return (
     <>
       <motion.div
         ref={ref}
-        initial={{ y: -240 }}
-        animate={isOpen ? { y: 0 } : { y: -240 }}
-        exit={{ y: -128 }}
+        initial={{ y: -yTransform }}
+        animate={isOpen ? { y: 0 } : { y: -yTransform }}
+        exit={{ y: -yTransform }}
         transition={{ ease: "easeInOut", duration: 0.3 }}
         className={twMerge(defaultClassName, className)}
       >
