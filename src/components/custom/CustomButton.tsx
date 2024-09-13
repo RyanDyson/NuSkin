@@ -2,7 +2,9 @@ import { Button, type ButtonProps } from "../ui/button";
 import { cva } from "class-variance-authority";
 import { cn } from "~/lib/utils";
 
-interface CustomButtonProps extends ButtonProps {}
+interface CustomButtonProps extends ButtonProps {
+  icon?: JSX.Element;
+}
 
 export const CustomButton = (props: CustomButtonProps) => {
   const { className, ...rest } = props;

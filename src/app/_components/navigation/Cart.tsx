@@ -88,7 +88,7 @@ export function Cart() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="flex flex-col bg-white p-2 ">
         <DropdownMenuLabel className="text-lg font-black">
-          <DisplayText>User's Shopping Cart</DisplayText>
+          <DisplayText>Users Shopping Cart</DisplayText>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-green-950/50" />
         <div className="flex flex-col gap-y-1 w-max max-h-80 overflow-y-scroll">
