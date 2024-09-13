@@ -1,5 +1,11 @@
+import { SwipeCarousel } from "./Carousell";
+
 //automatic scrolling carousel
 
 export function Display() {
-  return <div>display</div>;
+  return (
+    <div>
+      <SwipeCarousel />
+    </div>
+  );
 }

@@ -1,11 +1,13 @@
 "use client";
 
 import { DisplayText } from "./text/DisplayText";
-import { FaShoppingCart, FaSearch, FaUserCircle, FaBars } from "react-icons/fa";
+import { FaSearch, FaBars } from "react-icons/fa";
 import { NavDropdown } from "./navigation/NavDropdown";
 import { useState } from "react";
 import { ProfileMenu } from "./navigation/ProfileMenu";
 import { Cart } from "./navigation/Cart";
+import { Search } from "./navigation/Search";
+import { Categories } from "./navigation/Categories";
 
 export function NavBar() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState<boolean>(false);
@@ -53,25 +55,17 @@ export function NavBar() {
       <NavDropdown
         isOpen={isCategoriesOpen}
         setIsOpen={setIsCategoriesOpen}
-        className="h-32 bg-green-200 transition-all duration-300 ease-out"
+        className="h-min max-h-96 drop-shadow-lg bg-green-50 transition-all duration-300 ease-out z-20"
       >
-        {/* Categories content */}
+        <Categories />
       </NavDropdown>
 
       <NavDropdown
         isOpen={isSearchOpen}
         setIsOpen={setIsSearchOpen}
-        className="h-32 bg-yellow-200 transition-all duration-300 ease-out"
+        className="h-min max-h-96 drop-shadow-lg bg-green-50 transition-all duration-300 ease-out z-20"
       >
-        {/* Search content */}
-      </NavDropdown>
-
-      <NavDropdown
-        isOpen={isCartOpen}
-        setIsOpen={setIsCartOpen}
-        className="h-32 bg-blue-200 transition-all duration-300 ease-out"
-      >
-        {/* Cart content */}
+        <Search />
       </NavDropdown>
     </>
   );

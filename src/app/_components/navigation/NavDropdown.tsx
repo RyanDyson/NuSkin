@@ -11,7 +11,7 @@ type DropdownProps = {
 };
 
 const defaultClassName =
-  "w-full absolute bg-white text-green-900 h-screen rounded-lg";
+  "w-full h-auto absolute bg-white text-green-900 h-screen rounded-lg p-8";
 
 export function NavDropdown({
   children,

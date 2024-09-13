@@ -15,6 +15,7 @@ import demoThree from "~/../public/shoppingCart/demo3.jpeg";
 import Image from "next/image";
 import { useState } from "react";
 import { CustomButton } from "~/components/custom/CustomButton";
+import { DisplayText } from "../text/DisplayText";
 
 //to do -> add infinite scroller with loading, add skeleton when loading
 
@@ -52,7 +53,7 @@ const CardItemCard = (props: (typeof cartItem)[number]) => {
 
   return (
     <div>
-      <div className="flex gap-x-2 max-w-80">
+      <div className="flex gap-x-2 max-w-96">
         <Image src={image} alt={name} className="w-20 h-20 rounded-md" />
         <div className="flex flex-col">
           <p className="text-md font-bold">{name}</p>
@@ -66,7 +67,7 @@ const CardItemCard = (props: (typeof cartItem)[number]) => {
           >
             -
           </CustomButton>
-          <p className="text-sm">{quantityVar}</p>
+          <p className="text-sm p-2">{quantityVar}</p>
           <CustomButton
             className="text-sm"
             onClick={() => setQuantityVar(quantityVar + 1)}
@@ -85,23 +86,25 @@ export function Cart() {
       <DropdownMenuTrigger>
         <FaShoppingCart className="text-2xl cursor-pointer hover:text-green-200 transition-all duration-200" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="flex flex-col bg-green-50 p-2 "
-      >
-        <DropdownMenuLabel className="text-lg font-bold">
-          User's shopping cart
+      <DropdownMenuContent align="end" className="flex flex-col bg-white p-2 ">
+        <DropdownMenuLabel className="text-lg font-black">
+          <DisplayText>User's Shopping Cart</DisplayText>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator className="bg-green-200" />
+        <DropdownMenuSeparator className="bg-green-950/50" />
         <div className="flex flex-col gap-y-1 w-max max-h-80 overflow-y-scroll">
           {cartItem.map((item, index) => {
             return (
-              <DropdownMenuItem key={index}>
+              <DropdownMenuItem key={index} className="hover:bg-green-50">
                 <CardItemCard {...item} />
               </DropdownMenuItem>
             );
           })}
         </div>
+
+        <DropdownMenuSeparator className="bg-green-950/50" />
+        <CustomButton size={"lg"} className="mt-4">
+          Checkout
+        </CustomButton>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -15,6 +15,7 @@ import {
   DropdownMenuSeparator,
 } from "~/components/ui/dropdown-menu";
 import Link from "next/link";
+import { DisplayText } from "../text/DisplayText";
 
 // edit profile, account settings, favorites, billing history, log out
 
@@ -52,14 +53,11 @@ export function ProfileMenu() {
       <DropdownMenuTrigger>
         <FaUserCircle className="text-2xl cursor-pointer hover:text-green-200 transition-all duration-200" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="flex flex-col bg-green-50 p-2 "
-      >
+      <DropdownMenuContent align="end" className="flex flex-col bg-white p-2 ">
         <DropdownMenuLabel className="text-lg font-bold">
-          My Account
+          <DisplayText>My Account</DisplayText>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator className="bg-green-300" />
+        <DropdownMenuSeparator className="bg-green-950/50" />
         <div className="flex flex-col gap-y-1 w-max">
           {dropDownItems.map((item, index) => {
             return (
