@@ -1,7 +1,11 @@
+"use client";
+
 import { SetStateAction, type Dispatch } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import useMeasure from "react-use-measure";
+import { useOnClickOutside } from "usehooks-ts";
+import { useRef } from "react";
 
 type DropdownProps = {
   children?: React.ReactNode;
@@ -11,7 +15,7 @@ type DropdownProps = {
 };
 
 const defaultClassName =
-  "w-full h-auto absolute bg-white text-green-900 h-screen rounded-lg p-8";
+  "w-full h-auto absolute bg-white text-green-900 h-screen rounded-lg px-8 py-4";
 
 export function NavDropdown({
   children,
@@ -22,18 +26,28 @@ export function NavDropdown({
   const [ref, { height }] = useMeasure();
   const yTransform = 2 * height;
 
+  const contRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = () => {
+    setIsOpen(false);
+  };
+
+  useOnClickOutside(contRef, handleClickOutside);
+
   return (
     <>
-      <motion.div
-        ref={ref}
-        initial={{ y: -yTransform }}
-        animate={isOpen ? { y: 0 } : { y: -yTransform }}
-        exit={{ y: -yTransform }}
-        transition={{ ease: "easeInOut", duration: 0.3 }}
-        className={twMerge(defaultClassName, className)}
-      >
-        {children}
-      </motion.div>
+      <div ref={contRef}>
+        <motion.div
+          ref={ref}
+          initial={{ y: -yTransform }}
+          animate={isOpen ? { y: 80 } : { y: -yTransform }}
+          exit={{ y: -yTransform }}
+          transition={{ ease: "easeInOut", duration: 0.3 }}
+          className={twMerge(defaultClassName, className)}
+        >
+          {children}
+        </motion.div>
+      </div>
     </>
   );
 }

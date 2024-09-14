@@ -29,7 +29,7 @@ export default function RootLayout({
       <body style={font.style}>
         <TRPCReactProvider>
           <NavBar />
-          {children}
+          <div className="w-full p-0 m-0 pt-24">{children}</div>
         </TRPCReactProvider>
       </body>
     </html>

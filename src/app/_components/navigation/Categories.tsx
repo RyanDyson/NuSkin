@@ -30,7 +30,7 @@ type ColumnProps = {
 
 export function Column({ title, item }: ColumnProps) {
   return (
-    <div className="flex flex-col gap-y-1 w-max">
+    <div className="flex flex-col gap-y-1 w-1/6">
       <DisplayText className="font-bold text-2xl">{title}</DisplayText>
       <DropdownMenuSeparator className="bg-green-950/40" />
       {item.map((item, index) => {
@@ -38,7 +38,7 @@ export function Column({ title, item }: ColumnProps) {
           <Link
             key={index}
             href={item.href}
-            className=" text-neutral-900 text-md hover:bg-green-800 hover:text-white transition-colors duration-100 active:bg-green-900 cursor-pointer rounded-sm px-2 p-1"
+            className=" text-neutral-900 text-md hover:bg-green-800 hover:text-white transition-colors duration-100 active:bg-green-900 cursor-pointer rounded-sm px-2 p-0.5"
           >
             {item.label}
           </Link>

@@ -8,17 +8,35 @@ import { ProfileMenu } from "./navigation/ProfileMenu";
 import { Cart } from "./navigation/Cart";
 import { Search } from "./navigation/Search";
 import { Categories } from "./navigation/Categories";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useEffect } from "react";
 
 export function NavBar() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const { scrollY } = useScroll();
+  const [isHidden, setIsHidden] = useState<boolean>(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const prev = scrollY.getPrevious();
+    if (prev) {
+      if (latest > prev && latest > 150) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+    }
+  });
+
+  const scrollVariants = {
+    hidden: { y: -100 },
+    visible: { y: 0 },
+  };
 
   function toggleDropdown(dropdownName: string) {
     const dropdowns = {
       categories: setIsCategoriesOpen,
       search: setIsSearchOpen,
-      cart: setIsCartOpen,
     };
 
     Object.entries(dropdowns).forEach(([name, setter]) => {
@@ -30,9 +48,21 @@ export function NavBar() {
     });
   }
 
+  useEffect(() => {
+    if (isHidden) {
+      setIsCategoriesOpen(false);
+      setIsSearchOpen(false);
+    }
+  }, [isHidden]);
+
   return (
     <>
-      <div className="relative flex h-24 w-full items-center justify-between bg-green-900 p-8 px-16 text-green-50 z-50">
+      <motion.div
+        variants={scrollVariants}
+        animate={isHidden ? "hidden" : "visible"}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="fixed flex h-20 w-full items-center justify-between bg-green-900 p-8 px-16 text-green-50 z-50 transition-all duration-300 ease-in-out"
+      >
         <div className="flex gap-x-8">
           <FaBars
             onClick={() => toggleDropdown("categories")}
@@ -50,7 +80,7 @@ export function NavBar() {
           <Cart />
           <ProfileMenu />
         </div>
-      </div>
+      </motion.div>
 
       <NavDropdown
         isOpen={isCategoriesOpen}
