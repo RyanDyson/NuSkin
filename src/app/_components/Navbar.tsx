@@ -56,12 +56,12 @@ export function NavBar() {
   }, [isHidden]);
 
   return (
-    <>
+    <div className="fixed w-full z-50">
       <motion.div
         variants={scrollVariants}
         animate={isHidden ? "hidden" : "visible"}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="fixed flex h-20 w-full items-center justify-between bg-green-900 p-8 px-16 text-green-50 z-50 transition-all duration-300 ease-in-out"
+        className="relative flex h-20 w-full items-center justify-between bg-green-900 p-8 px-16 text-green-50 z-50 transition-all duration-300 ease-in-out"
       >
         <div className="flex gap-x-8">
           <FaBars
@@ -97,6 +97,6 @@ export function NavBar() {
       >
         <Search />
       </NavDropdown>
-    </>
+    </div>
   );
 }

@@ -5,6 +5,7 @@ import {
   FaHeart,
   FaReceipt,
   FaSignOutAlt,
+  FaSignInAlt,
 } from "react-icons/fa";
 import {
   DropdownMenu,
@@ -16,6 +17,8 @@ import {
 } from "~/components/ui/dropdown-menu";
 import Link from "next/link";
 import { DisplayText } from "../text/DisplayText";
+import { useUser, SignInButton } from "@clerk/nextjs";
+import { Sign } from "crypto";
 
 // edit profile, account settings, favorites, billing history, log out
 
@@ -48,6 +51,8 @@ const dropDownItems = [
 ];
 
 export function ProfileMenu() {
+  const { isSignedIn } = useUser();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -59,16 +64,27 @@ export function ProfileMenu() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-green-950/50" />
         <div className="flex flex-col gap-y-1 w-max">
-          {dropDownItems.map((item, index) => {
-            return (
-              <Link href={item.href} key={index}>
-                <DropdownMenuItem className="flex justify-between w-full items-center text-neutral-900 text-md gap-x-10 focus:bg-green-800 focus:text-white transition-colors duration-100 p-2 active:bg-green-900 cursor-pointer">
-                  {item.logo}
-                  <span>{item.label}</span>
-                </DropdownMenuItem>
-              </Link>
-            );
-          })}
+          {isSignedIn ? (
+            dropDownItems.map((item, index) => {
+              return (
+                <Link href={item.href} key={index}>
+                  <DropdownMenuItem className="flex justify-between w-full items-center text-neutral-900 text-md gap-x-10 focus:bg-green-800 focus:text-white transition-colors duration-100 p-2 active:bg-green-900 cursor-pointer">
+                    {item.logo}
+                    <span>{item.label}</span>
+                  </DropdownMenuItem>
+                </Link>
+              );
+            })
+          ) : (
+            <DropdownMenuItem className="flex justify-between w-full items-center text-neutral-900 text-md gap-x-10 focus:bg-green-800 focus:text-white transition-colors duration-100 p-2 active:bg-green-900 cursor-pointer">
+              <SignInButton>
+                <>
+                  <FaSignInAlt />
+                  <span>Sign In</span>
+                </>
+              </SignInButton>
+            </DropdownMenuItem>
+          )}
         </div>
       </DropdownMenuContent>
     </DropdownMenu>

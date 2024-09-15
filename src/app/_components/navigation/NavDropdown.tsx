@@ -40,7 +40,7 @@ export function NavDropdown({
         <motion.div
           ref={ref}
           initial={{ y: -yTransform }}
-          animate={isOpen ? { y: 80 } : { y: -yTransform }}
+          animate={isOpen ? { y: 0 } : { y: -yTransform }}
           exit={{ y: -yTransform }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
           className={twMerge(defaultClassName, className)}

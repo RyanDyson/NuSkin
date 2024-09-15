@@ -1,3 +1,11 @@
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
@@ -25,13 +33,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body style={font.style}>
-        <TRPCReactProvider>
-          <NavBar />
-          <div className="w-full p-0 m-0 pt-24">{children}</div>
-        </TRPCReactProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <body style={font.style}>
+          <TRPCReactProvider>
+            <NavBar />
+            <div className="w-full p-0 m-0 pt-24">{children}</div>
+          </TRPCReactProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
