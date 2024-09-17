@@ -10,12 +10,14 @@ import { Search } from "./navigation/Search";
 import { Categories } from "./navigation/Categories";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export function NavBar() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const { scrollY } = useScroll();
   const [isHidden, setIsHidden] = useState<boolean>(false);
+  const router = useRouter();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = scrollY.getPrevious();
@@ -61,7 +63,7 @@ export function NavBar() {
         variants={scrollVariants}
         animate={isHidden ? "hidden" : "visible"}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="relative flex h-20 w-full items-center justify-between bg-green-900 p-8 px-16 text-green-50 z-50 transition-all duration-300 ease-in-out"
+        className="relative flex h-20 w-full items-center justify-between bg-green-900 p-8 md:px-16 text-green-50 z-50 transition-all duration-300 ease-in-out"
       >
         <div className="flex gap-x-8">
           <FaBars
@@ -73,8 +75,8 @@ export function NavBar() {
             className="text-2xl cursor-pointer hover:text-green-200 transition-all duration-200"
           />
         </div>
-        <div>
-          <DisplayText className="text-4xl">NuSkin</DisplayText>
+        <div onClick={() => router.push("/")}>
+          <DisplayText className="text-4xl cursor-pointer">NuSkin</DisplayText>
         </div>
         <div className="flex gap-x-8">
           <Cart />

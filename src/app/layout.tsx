@@ -1,20 +1,12 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "~/styles/globals.css";
-
-import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
 import { DM_Sans } from "next/font/google";
-
 import { NavBar } from "./_components/Navbar";
 
 export const metadata: Metadata = {
@@ -34,11 +26,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${GeistSans.variable}`}>
+      <html lang="en">
         <body style={font.style}>
           <TRPCReactProvider>
             <NavBar />
-            <div className="w-full p-0 m-0 pt-24">{children}</div>
+            <SpeedInsights />
+            {children}
           </TRPCReactProvider>
         </body>
       </html>

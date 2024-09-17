@@ -16,6 +16,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { CustomButton } from "~/components/custom/CustomButton";
 import { DisplayText } from "../text/DisplayText";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 //to do -> add infinite scroller with loading, add skeleton when loading
 

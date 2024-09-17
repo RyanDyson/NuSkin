@@ -1,3 +1,5 @@
+type ProductCardProps = {};
+
 export function ProductCard() {
   return (
     <div>
