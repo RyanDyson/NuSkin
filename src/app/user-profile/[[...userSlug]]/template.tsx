@@ -38,6 +38,7 @@ type Props = {
 
 export default function Template({ children }: Props) {
   const [clerkOpen, setClerkOpen] = useState<boolean>(false);
+  const { signOut } = useClerk();
   const DemoRowItems = [
     {
       logo: <FaUser />,
@@ -69,9 +70,8 @@ export default function Template({ children }: Props) {
       name: "Sign Out",
       className: "mt-auto",
       href: "",
-      onClick: () => {
-        const { signOut } = useClerk();
-        signOut();
+      onClick: async () => {
+        await signOut();
       },
     },
   ];

@@ -2,20 +2,19 @@
 
 import Demo1 from "~/../public/product/Npure/demo1.jpg";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CustomButton } from "~/components/custom/CustomButton";
 import {
   FaShoppingCart,
   FaPlus,
   FaMinus,
-  FaArrowRight,
+  // FaArrowRight,
   FaArrowLeft,
 } from "react-icons/fa";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  type CarouselApi,
 } from "~/components/ui/carousel";
 import { DisplayText } from "../_components/text/DisplayText";
 
@@ -31,14 +30,14 @@ const DemoObject = {
 
 export default function Page() {
   const [amount, setAmount] = useState<number>(0);
-  const [api, setApi] = useState<CarouselApi | null>(null);
+  // const [api, setApi] = useState<CarouselApi | null>(null);
 
   return (
     <div className="flex flex-col md:flex-row p-8 px-24 items-center">
       <Carousel className="max-w-[600px] flex gap-x-2">
         <div>
           <CustomButton
-            onClick={() => api?.scrollTo(3)}
+            // onClick={() => api?.scrollTo(3)}
             className=" absolute z-50 bg-opacity-70 h-4 p-4"
           >
             <FaArrowLeft />

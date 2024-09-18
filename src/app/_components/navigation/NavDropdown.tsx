@@ -1,6 +1,6 @@
 "use client";
 
-import { SetStateAction, type Dispatch } from "react";
+import { type SetStateAction, type Dispatch } from "react";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import useMeasure from "react-use-measure";

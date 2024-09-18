@@ -16,7 +16,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { CustomButton } from "~/components/custom/CustomButton";
 import { DisplayText } from "../text/DisplayText";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 //to do -> add infinite scroller with loading, add skeleton when loading
 
@@ -49,7 +48,7 @@ const cartItem = [
 ];
 
 const CardItemCard = (props: (typeof cartItem)[number]) => {
-  const { id, name, price, image, brand, quantity } = props;
+  const { name, price, image, brand, quantity } = props;
   const [quantityVar, setQuantityVar] = useState<number>(quantity);
 
   return (

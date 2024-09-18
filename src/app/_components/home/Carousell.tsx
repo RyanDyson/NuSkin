@@ -1,13 +1,12 @@
 "use client";
 
 import React, {
-  SetStateAction,
+  type SetStateAction,
   useEffect,
   useState,
   type Dispatch,
 } from "react";
 import { motion, useMotionValue } from "framer-motion";
-import Image from "next/image";
 
 const imgs = [
   "/imgs/nature/1.jpg",
@@ -55,7 +54,7 @@ export const SwipeCarousel = () => {
     }, AUTO_DELAY);
 
     return () => clearInterval(intervalRef);
-  }, []);
+  }, [dragX]);
 
   const onDragEnd = () => {
     const x = dragX.get();

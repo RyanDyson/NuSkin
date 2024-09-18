@@ -1,5 +1,5 @@
 import { DisplayText } from "../text/DisplayText";
-import Image, { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import nPure from "~/../public/images.png";
 import { CustomButton } from "~/components/custom/CustomButton";
 
