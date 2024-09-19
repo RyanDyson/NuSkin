@@ -16,7 +16,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "~/components/ui/carousel";
-import { DisplayText } from "../_components/text/DisplayText";
+import { DisplayText } from "~/app/_components/text/DisplayText";
 
 const DemoObject = {
   brand: {
@@ -28,7 +28,7 @@ const DemoObject = {
   images: [Demo1],
 };
 
-export default function Page() {
+export default function Page({ params }: { params: { product: string } }) {
   const [amount, setAmount] = useState<number>(0);
   // const [api, setApi] = useState<CarouselApi | null>(null);
 

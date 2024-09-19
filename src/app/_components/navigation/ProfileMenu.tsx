@@ -63,7 +63,7 @@ const CustomSignOutButton = () => {
   );
 };
 
-export function ProfileMenu() {
+export function ProfileMenu({ params }: { params: { slug?: string[] } }) {
   const { isSignedIn } = useUser();
 
   return (
