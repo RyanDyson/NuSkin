@@ -17,6 +17,15 @@ model User {
     phone String @unique
 
     Reviews Reviews[]
+    Cart    Cart?
+}
+
+model Cart {
+    id     String @id @default(uuid())
+    userId String @unique
+
+    product Product[]
+    User    User      @relation(fields: [userId], references: [id])
 }
 
 model Product {
@@ -30,6 +39,7 @@ model Product {
 
     brand   Brand     @relation(fields: [brandId], references: [id])
     Reviews Reviews[]
+    Cart    Cart[]
 }
 
 model Brand {
