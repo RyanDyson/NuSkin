@@ -29,7 +29,7 @@ const DemoObject = {
   images: [Demo1],
 };
 
-export default function Page({ params }: { params: { product: string } }) {
+export default function Page() {
   const [amount, setAmount] = useState<number>(0);
   // const [api, setApi] = useState<CarouselApi | null>(null);
 

@@ -63,5 +63,7 @@ export const userRouter = createTRPCRouter({
           phone: input.phone,
         },
       });
+
+      return user;
     }),
 });

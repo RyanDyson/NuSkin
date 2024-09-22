@@ -1,5 +1,4 @@
 import { DisplayText } from "~/app/_components/text/DisplayText";
-import { CustomButton } from "~/components/custom/CustomButton";
 import { api } from "~/trpc/server";
 import {
   Accordion,

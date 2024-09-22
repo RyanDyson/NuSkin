@@ -6,8 +6,6 @@ import { NavDropdown } from "./navigation/NavDropdown";
 import { useState } from "react";
 import { ProfileMenu } from "./navigation/ProfileMenu";
 import { Cart } from "./navigation/Cart";
-import { Search } from "./navigation/Search";
-import { Categories } from "./navigation/Categories";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
