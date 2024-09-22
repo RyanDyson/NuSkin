@@ -1,6 +1,7 @@
 import { DropdownMenuSeparator } from "~/components/ui/dropdown-menu";
 import { DisplayText } from "../text/DisplayText";
 import Link from "next/link";
+import { api } from "~/trpc/server";
 
 const testColumn = {
   title: "Featured",
@@ -28,9 +29,9 @@ type ColumnProps = {
   }[];
 };
 
-export function Column({ title, item }: ColumnProps) {
+export async function Column({ title, item }: ColumnProps) {
   return (
-    <div className="flex flex-col gap-y-1 w-1/6">
+    <div className="flex flex-col gap-y-1 w-1/6 pl-4">
       <DisplayText className="font-bold text-2xl">{title}</DisplayText>
       <DropdownMenuSeparator className="bg-green-950/40" />
       {item.map((item, index) => {
@@ -48,10 +49,22 @@ export function Column({ title, item }: ColumnProps) {
   );
 }
 
-export function Categories() {
+export async function Categories() {
+  const data = await api.categories.categoriesList();
+  const categories = {
+    title: "Categories",
+    item: data.map((item) => {
+      return {
+        label: item.name,
+        href: "",
+      };
+    }),
+  };
+
   return (
-    <div>
+    <div className="flex gap-x-4 pb-4">
       <Column {...testColumn} />
+      <Column {...categories} />
     </div>
   );
 }

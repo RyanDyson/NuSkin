@@ -17,6 +17,7 @@ import {
   CarouselItem,
 } from "~/components/ui/carousel";
 import { DisplayText } from "~/app/_components/text/DisplayText";
+// import { api } from "~/trpc/server";
 
 const DemoObject = {
   brand: {

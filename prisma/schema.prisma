@@ -37,14 +37,23 @@ model Product {
     images          String
     ingredientsList String
 
-    brand   Brand     @relation(fields: [brandId], references: [id])
-    Reviews Reviews[]
-    Cart    Cart[]
+    brand      Brand        @relation(fields: [brandId], references: [id])
+    Reviews    Reviews[]
+    Cart       Cart[]
+    Categories Categories[]
+}
+
+model Categories {
+    id   String @id @default(uuid())
+    name String
+
+    products Product[]
 }
 
 model Brand {
     id      String    @id @default(uuid())
     name    String
+    logo    String
     Product Product[]
 }
 

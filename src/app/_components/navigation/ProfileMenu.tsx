@@ -24,7 +24,7 @@ import {
   SignedIn,
   SignOutButton,
 } from "@clerk/nextjs";
-import { api } from "~/trpc/server";
+// import { api } from "~/trpc/server";
 
 // edit profile, account settings, favorites, billing history, log out
 
@@ -64,7 +64,7 @@ const CustomSignOutButton = () => {
   );
 };
 
-export function ProfileMenu({ params }: { params: { slug?: string[] } }) {
+export function ProfileMenu() {
   const { isSignedIn } = useUser();
 
   return (

@@ -12,7 +12,14 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export function NavBar() {
+type NavBarProps = {
+  children?: {
+    categories?: React.ReactNode;
+    search?: React.ReactNode;
+  };
+};
+
+export function NavBar(props: NavBarProps) {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const { scrollY } = useScroll();
@@ -89,7 +96,7 @@ export function NavBar() {
         setIsOpen={setIsCategoriesOpen}
         className="h-min max-h-96 drop-shadow-lg bg-green-50 transition-all duration-300 ease-out z-20"
       >
-        <Categories />
+        {props.children?.categories}
       </NavDropdown>
 
       <NavDropdown
@@ -97,7 +104,7 @@ export function NavBar() {
         setIsOpen={setIsSearchOpen}
         className="h-min max-h-96 drop-shadow-lg bg-green-50 transition-all duration-300 ease-out z-20"
       >
-        <Search />
+        {props.children?.search}
       </NavDropdown>
     </div>
   );
